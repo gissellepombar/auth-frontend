@@ -2,6 +2,8 @@
 import { useState, useContext } from "react"
 import { useNavigate } from "react-router-dom"
 import { AuthContext } from "../App"
+import Form from "react-bootstrap/Form"
+import Button from "react-bootstrap/Button"
 
 
 export default function SignupForm() {
@@ -33,19 +35,38 @@ export default function SignupForm() {
         })
         .catch(err => alert(err.message))
         setUser({ email, password })
-    navigate('/secret')
+        navigate('/secret')
     }
     return (
-        <form onSubmit={handleSubmit}>
-        <label htmlFor="email">Email &nbsp;
-            <input type="email" name="email" 
-            value={email} onChange={e => setEmail(e.target.value)}/>
-        </label><br />
-        <label htmlFor="password">Password &nbsp;
-            <input type="password" name="password" 
-            value={password} onChange={e => setPassword(e.target.value)}/>
-        </label><br />
-        <input type='submit' value='Sign Up' />
-        </form>
+        <>
+            <h2>Signup Form</h2>
+
+            <form onSubmit={handleSubmit}>
+                <Form.Group>
+                    <Form.Label>Email</Form.Label>
+                    <Form.Control 
+                        name="email"
+                        type="email" 
+                        placeholder="Enter Email"
+                        value={email}
+                        onChange={e => setEmail(e.target.value)} />
+                </Form.Group>
+
+                <Form.Group>
+                    <Form.Label>Password</Form.Label>
+                    <Form.Control 
+                        name="password"
+                        type="password" 
+                        placeholder="Password"
+                        value={password}
+                        onChange={e => setPassword(e.target.value)} />
+                </Form.Group>
+                <Button 
+                    variant="primary" 
+                    type="submit">
+                    Submit
+                </Button>
+            </form>
+        </>
     )
 }
