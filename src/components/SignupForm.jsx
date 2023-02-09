@@ -14,12 +14,24 @@ export default function SignupForm() {
         e.preventDefault();
 
     //make a post request to the API with the form data
+    fetch('http://127.0.0.1:5002/signup', {
+        method: 'POST', 
+        headers: { 
+            'Content-Type': 'application/json'
+         },
+         body: JSON.stringify({email, password}),
+    })
     // create a new user in the databse
     //then...
-    //1. do something w the new user
-    //use setUser
+        .then(res => res.json())
+        .then(response => {
+            //1. do something w the new user
+            setUser(response.user)
+            //2. redirect to the content page
+            navigate('/secret')
+        })
+        .catch(err => alert(err.message))
     setUser({ email, password })
-    //2. redirect to the content page
     navigate('/secret')
     }
     return (
