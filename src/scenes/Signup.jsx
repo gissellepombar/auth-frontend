@@ -1,5 +1,11 @@
-export default function Welcome() {
+import Header from "../components/Header"
+import SignupForm from '../components/SignupForm'
+
+export default function Signup() {
     return(
-        <h1></h1>
+        <>
+        <Header title='Signup'/>
+        <SignupForm />
+        </>
     )
 }
