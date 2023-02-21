@@ -18,7 +18,8 @@ export default function LoginForm() {
         e.preventDefault();
 
     //make a post request to the API with the form data
-    fetch('https://auth-api-gp.web.app/signup', {
+    // fetch('https://auth-api-gp.web.app/signup', {
+    fetch('http://127.0.0.1:5002/login', {
         method: 'POST', 
         headers: { 
             'Content-Type': 'application/json'
@@ -28,9 +29,10 @@ export default function LoginForm() {
     // create a new user in the databse
     //then...
         .then(res => res.json())
-        .then(response => {
+        .then((user) => {
             //1. do something w the new user
-            setUser(response.user)
+            console.log(user)
+            setUser(user)
             //2. redirect to the content page
             navigate('/secret')
         })

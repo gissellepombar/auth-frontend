@@ -1,4 +1,4 @@
-export default function Welcome() {
+export default function Content() {
     return(
         <h1>Secret</h1>
     )

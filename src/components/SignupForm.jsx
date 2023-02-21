@@ -1,6 +1,6 @@
 
 import { useState, useContext } from "react"
-import { useNavigate } from "react-router-dom"
+import { useNavigate, Link } from "react-router-dom"
 import { AuthContext } from "../App"
 import Form from "react-bootstrap/Form"
 import Button from "react-bootstrap/Button"
@@ -17,7 +17,8 @@ export default function SignupForm() {
         e.preventDefault();
 
     //make a post request to the API with the form data
-    fetch('https://auth-api-gp.web.app/signup', {
+    //fetch('https://auth-api-gp.web.app/signup', {
+    fetch('http://127.0.0.1:5002/signup', {
         method: 'POST', 
         headers: { 
             'Content-Type': 'application/json'
